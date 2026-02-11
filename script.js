@@ -42,6 +42,25 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
+// FAQ Accordion functionality
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        
+        // Close other open items
+        document.querySelectorAll('.faq-item.active').forEach(item => {
+            if (item !== faqItem) {
+                item.classList.remove('active');
+            }
+        });
+        
+        // Toggle current item
+        faqItem.classList.toggle('active');
+    });
+});
+
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
@@ -57,7 +76,11 @@ const observer = new IntersectionObserver(entries => {
     });
 }, observerOptions);
 
+<<<<<<< teste
 document.querySelectorAll('.fade-in-up, .feature-card, .info-card, .plan-card, .faq-item').forEach(element => {
+=======
+document.querySelectorAll('.fade-in-up, .feature-card, .info-card, .faq-item').forEach(element => {
+>>>>>>> main
     observer.observe(element);
 });
 
