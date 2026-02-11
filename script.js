@@ -15,10 +15,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Mobile menu toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
+const navItems = document.querySelectorAll('.nav-item');
 
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    
+    // Anima cada item do menu quando abre
+    navItems.forEach((item, index) => {
+        if (navMenu.classList.contains('active')) {
+            setTimeout(() => {
+                item.classList.add('active');
+            }, index * 50); // Delay progressivo
+        } else {
+            item.classList.remove('active');
+        }
+    });
 });
 
 // Close menu when link is clicked
@@ -26,6 +38,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
+        navItems.forEach(item => item.classList.remove('active'));
     });
 });
 

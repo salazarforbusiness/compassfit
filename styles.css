@@ -3,7 +3,25 @@
     padding: 0;
     box-sizing: border-box;
 }
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    animation: slideInLogo 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
 
+@keyframes slideInLogo {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 :root {
     --compass-yellow: #FFC107;
     --fit-orange: #FF6F00;
@@ -41,15 +59,20 @@ body {
     top: 0;
     z-index: 1000;
     border-bottom: 2px solid rgba(255, 207, 7, 0.1);
-    animation: slideDown 0.6s ease-out;
+    animation: slideDownSmooth 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform: translateY(-100%);
+    opacity: 0;
 }
 
-@keyframes slideDown {
-    from {
+@keyframes slideDownSmooth {
+    0% {
         transform: translateY(-100%);
         opacity: 0;
     }
-    to {
+    50% {
+        opacity: 0.5;
+    }
+    100% {
         transform: translateY(0);
         opacity: 1;
     }
@@ -70,6 +93,18 @@ body {
     letter-spacing: 2px;
     cursor: pointer;
     text-transform: uppercase;
+    animation: slideInLogo 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes slideInLogo {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .compass {
@@ -86,6 +121,46 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+}
+
+.nav-item {
+    animation: slideDownMenu 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+}
+
+.nav-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.nav-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.nav-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.nav-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.nav-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.nav-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+@keyframes slideDownMenu {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .nav-link {
@@ -119,6 +194,18 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    animation: slideInHamburger 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes slideInHamburger {
+    0% {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .hamburger span {
@@ -140,7 +227,6 @@ body {
 .hamburger.active span:nth-child(3) {
     transform: rotate(45deg) translate(-7px, -7px);
 }
-
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -859,17 +945,46 @@ section {
         background-color: rgba(15, 15, 15, 0.99);
         width: 100%;
         text-align: center;
-        transition: 0.3s;
+        transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         padding: 2rem 0;
         gap: 0;
     }
 
     .nav-menu.active {
         left: 0;
+        animation: slideInMenu 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes slideInMenu {
+        0% {
+            left: -100%;
+            opacity: 0;
+        }
+        100% {
+            left: 0;
+            opacity: 1;
+        }
     }
 
     .nav-item {
         padding: 1rem 0;
+        animation: none;
+        opacity: 1;
+    }
+
+    .nav-item.active {
+        animation: slideDownMenuItem 0.4s ease-out forwards;
+    }
+
+    @keyframes slideDownMenuItem {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .hero-title {
