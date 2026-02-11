@@ -17,12 +17,14 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
 });
 
 // Close menu when link is clicked
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     });
 });
@@ -42,7 +44,7 @@ const observer = new IntersectionObserver(entries => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.fade-in-up, .feature-card, .info-card').forEach(element => {
+document.querySelectorAll('.fade-in-up, .feature-card, .info-card, .plan-card, .faq-item').forEach(element => {
     observer.observe(element);
 });
 
@@ -73,7 +75,6 @@ if (contactForm) {
 window.addEventListener('load', () => {
     const letters = document.querySelectorAll('.letter');
     letters.forEach((letter, index) => {
-        // Add shake class to trigger animation only once
         letter.classList.add('shake');
         letter.style.animationDelay = `${index * 0.1}s`;
     });
@@ -83,7 +84,7 @@ window.addEventListener('load', () => {
         letters.forEach(letter => {
             letter.classList.remove('shake');
         });
-    }, 1500); // Animation duration + delay
+    }, 1500);
 });
 
 // Navbar background on scroll
@@ -94,4 +95,35 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.style.borderBottom = '2px solid rgba(255, 207, 7, 0.1)';
     }
+});
+
+// FAQ Accordion functionality
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all other items
+        document.querySelectorAll('.faq-item.active').forEach(item => {
+            if (item !== faqItem) {
+                item.classList.remove('active');
+            }
+        });
+        
+        // Toggle current item
+        faqItem.classList.toggle('active');
+    });
+});
+
+// Plan button interactions
+const planButtons = document.querySelectorAll('.plan-card .btn');
+
+planButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const planName = button.closest('.plan-card').querySelector('.plan-name').textContent;
+        alert(`Você selecionou o plano ${planName}! Entre em contato conosco para mais informações.`);
+    });
 });
