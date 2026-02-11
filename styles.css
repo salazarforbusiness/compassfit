@@ -129,6 +129,18 @@ body {
     transition: 0.3s;
 }
 
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-7px, -7px);
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -262,6 +274,18 @@ body {
     transform: translateY(-1px);
 }
 
+.btn-secondary {
+    background: rgba(255, 207, 7, 0.1);
+    color: var(--compass-yellow);
+    border: 2px solid var(--compass-yellow);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 207, 7, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 207, 7, 0.3);
+}
+
 /* Sections */
 section {
     padding: 80px 0;
@@ -342,6 +366,244 @@ section {
 .feature-card p {
     color: var(--secondary-text);
     font-size: 0.9rem;
+}
+
+/* Plans Section */
+.plans {
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 111, 0, 0.05) 100%);
+}
+
+.plans-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--secondary-text);
+    margin-bottom: 3rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.plan-card {
+    background: rgba(255, 207, 7, 0.05);
+    border: 1px solid rgba(255, 207, 7, 0.2);
+    border-radius: 15px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 207, 7, 0.1), transparent);
+    transition: left 0.3s ease;
+}
+
+.plan-card:hover::before {
+    left: 100%;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--compass-yellow);
+    box-shadow: 0 20px 50px rgba(255, 207, 7, 0.2);
+}
+
+.plan-popular {
+    border: 2px solid var(--fit-orange);
+    transform: scale(1.05);
+}
+
+.plan-popular:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 30px 60px rgba(255, 111, 0, 0.3);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background: linear-gradient(90deg, var(--compass-yellow), var(--fit-orange));
+    color: #000;
+    padding: 8px 40px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transform: rotate(45deg);
+    z-index: 10;
+}
+
+.plan-header {
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.plan-name {
+    font-size: 1.8rem;
+    color: var(--compass-yellow);
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.plan-price {
+    font-size: 2.5rem;
+    color: var(--fit-orange);
+    font-weight: bold;
+}
+
+.currency {
+    font-size: 1.5rem;
+    vertical-align: super;
+}
+
+.amount {
+    margin: 0 0.25rem;
+}
+
+.period {
+    font-size: 1rem;
+    color: var(--secondary-text);
+    margin-left: 0.5rem;
+}
+
+.plan-badge {
+    display: inline-block;
+    background: rgba(255, 111, 0, 0.2);
+    color: var(--fit-orange);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+    font-weight: 600;
+}
+
+.plan-benefits {
+    list-style: none;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.plan-benefits li {
+    padding: 0.75rem 0;
+    color: var(--secondary-text);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.plan-benefits i {
+    color: var(--compass-yellow);
+    font-size: 0.85rem;
+    width: 16px;
+}
+
+.plan-benefits i.fa-times {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.plan-card .btn {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* FAQ Section */
+.faq {
+    background: linear-gradient(180deg, rgba(255, 207, 7, 0.05) 0%, transparent 50%);
+}
+
+.faq-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--secondary-text);
+    margin-bottom: 3rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: rgba(255, 207, 7, 0.05);
+    border: 1px solid rgba(255, 207, 7, 0.2);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--compass-yellow);
+    box-shadow: 0 10px 30px rgba(255, 207, 7, 0.1);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--light-text);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.faq-question:hover {
+    color: var(--compass-yellow);
+    background: rgba(255, 207, 7, 0.05);
+}
+
+.faq-question i {
+    color: var(--fit-orange);
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+.faq-answer p {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--secondary-text);
+    line-height: 1.8;
+    animation: fadeInUp 0.3s ease-out;
 }
 
 /* Contact Section */
@@ -563,6 +825,27 @@ section {
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+    .plans-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .plan-popular {
+        grid-column: 1 / -1;
+        max-width: 400px;
+        margin: 0 auto;
+        transform: scale(1);
+    }
+
+    .plan-popular:hover {
+        transform: scale(1) translateY(-10px);
+    }
+
+    .location-content {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -598,9 +881,21 @@ section {
     }
 
     .about-content,
-    .contact-content,
-    .location-content {
+    .contact-content {
         grid-template-columns: 1fr;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-popular {
+        grid-column: auto;
+        transform: scale(1);
+    }
+
+    .plan-popular:hover {
+        transform: scale(1) translateY(-10px);
     }
 
     section {
@@ -626,11 +921,21 @@ section {
     }
 
     .feature-card,
-    .info-card {
+    .info-card,
+    .plan-card {
         padding: 1.5rem;
     }
 
     .social-links {
         justify-content: center;
+    }
+
+    .faq-question {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .faq-answer p {
+        padding: 0 1rem 1rem;
     }
 }
